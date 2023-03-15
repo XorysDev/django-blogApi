@@ -4,12 +4,18 @@ from .models import Post
 
 
 class PostListSerializer(serializers.ModelSerializer):
+    owner_username = serializers.ReadOnlyField(source='owner.username')
+    category_name = serializers.ReadOnlyField(source='category.name')
+
     class Meta:
         model = Post
-        fields = ('id', 'title', 'owner', 'category', 'preview')
+        fields = ('id', 'title', 'owner', 'category', 'preview', 'owner_username', 'category_name')
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
+    owner_username = serializers.ReadOnlyField(source='owner.username')
+    category_name = serializers.ReadOnlyField(source='category.name')
+
     class Meta:
         model = Post
         fields = '__all__'
