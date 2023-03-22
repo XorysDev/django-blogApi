@@ -44,18 +44,13 @@ urlpatterns = [
     path('api/v1/categories/', include('category.urls')),
     path('api/v1/posts/', include('post.urls')),
     path('api/v1/comments/', include('comment.urls')),
+    path('api/v1/likes/', include('like.urls'))
 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# TODO ViewSET, actions
 
-# TODO likes
-# TODO favorites
-
-# TODO Images
 # TODO filer, search, pagination
-
 # TODO deploy
 # TODO followings

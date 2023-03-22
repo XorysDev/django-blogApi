@@ -1,5 +1,6 @@
 from django.db import models
 from category.models import Category
+from random import randint
 
 
 class Post(models.Model):
@@ -18,3 +19,16 @@ class Post(models.Model):
 
     class Meta:
         ordering = ('created_at',)
+
+
+class PostImages(models.Model):
+    title = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to='images/')
+    post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
+
+    def generate_name(self):
+        return 'image' + str(self.id) + str(randint(100000, 1_000_000))
+
+    def save(self, *args, **kwargs):
+        self.title = self.generate_name()
+        return super(PostImages, self).save(*args, **kwargs)
