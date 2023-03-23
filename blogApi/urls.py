@@ -51,6 +51,5 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-# TODO filer, search, pagination
 # TODO deploy
 # TODO followings
